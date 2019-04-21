@@ -91,6 +91,22 @@ describe RegularItem do
         GildedRose.new(item).update_quality
         expect(item.quality).to eq(2)
       end
+
+      it "will not raise its quality to greater than 50 after sell in" do
+        item = RegularItem.new("Backstage passes to a TAFKAL80ETC concert", 10, 49)
+        GildedRose.new(item).update_quality
+        expect(item.quality).to eq(50)
+      end
+    end
+
+    context "when sellIn is less than or equal to 5 but greater than 0" do
+
+      it "increases its quality by three after each day" do
+        item = RegularItem.new("Backstage passes to a TAFKAL80ETC concert", 2, 0)
+        GildedRose.new(item).update_quality
+        expect(item.quality).to eq(3)
+      end
+
     end
 
     end
