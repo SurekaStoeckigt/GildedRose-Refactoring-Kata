@@ -19,5 +19,12 @@ describe GildedRose do
       expect(gilded_rose.quality).to eq(1)
     end
 
+    it "will not increase the quality of Aged Brie if the quality is already 50" do
+      gilded_rose = GildedRose.new(Item.new("Aged Brie", 1, 50))
+      gilded_rose.update_quality()
+      expect(gilded_rose.name).to eq "Aged Brie"
+      expect(gilded_rose.quality).to eq(50)
+    end
+
   end
 end

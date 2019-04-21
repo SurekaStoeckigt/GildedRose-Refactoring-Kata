@@ -11,9 +11,9 @@ attr_reader :items, :name, :quality
     p @items
 
     # @items.each do |item|
-      if @name == "Aged Brie"
+      if @name == "Aged Brie" && @quality < 50
          @quality += 1
-       elsif @quality == 0
+       elsif @quality == 0 ||@quality == 50
          @quality
        else
          @quality -= 1
