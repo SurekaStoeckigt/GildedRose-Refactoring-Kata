@@ -9,7 +9,20 @@ describe GildedRose do
       gilded_rose = GildedRose.new(Item.new("foo", 0, 0))
       gilded_rose.update_quality()
       expect(gilded_rose.name).to eq "foo"
+    end
+
+    it "does not decrease the quality of an item if it already at 0" do
+      gilded_rose = GildedRose.new(Item.new("foo", 0, 0))
+      gilded_rose.update_quality()
+      expect(gilded_rose.name).to eq "foo"
       expect(gilded_rose.quality).to eq(0)
+    end
+
+    it "will decrease the quality of an item that is greater than 0 and not Aged Brie" do
+      gilded_rose = GildedRose.new(Item.new("foo", 1, 2))
+      gilded_rose.update_quality()
+      expect(gilded_rose.name).to eq "foo"
+      expect(gilded_rose.quality).to eq(1)
     end
 
     it "the aged brie increases in quality as it gets older" do
