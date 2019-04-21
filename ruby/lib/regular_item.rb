@@ -5,8 +5,8 @@ class RegularItem < Item
 
   def alter_quality
     if @name == "Aged Brie"
-      @quality += 1
-      return @quality
+
+      return @quality +=1
     end
 
     if @quality > 0 && @sell_in > 0
