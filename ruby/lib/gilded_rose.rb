@@ -2,6 +2,7 @@ require_relative 'item'
 class GildedRose
 # attr_reader :items
 
+
   def initialize(items)
     @items_array = []
     @items = @items_array.push(items)

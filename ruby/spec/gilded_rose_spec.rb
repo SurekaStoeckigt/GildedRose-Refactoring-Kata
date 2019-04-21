@@ -1,16 +1,21 @@
 # # require File.join(File.dirname(__FILE__), 'gilded_rose')
-# require "./lib/gilded_rose.rb"
+require "./lib/gilded_rose.rb"
 #
-# describe GildedRose do
+describe GildedRose do
+
+  describe "#update_quality" do
 #
-#   describe "#update_quality" do
-#
-#     it "does not change the name" do
-#       items = Item.new("foo", 0, 0)
-#       GildedRose.new(items)
-#       GildedRose.new(items).update_quality()
-#       expect(items[0].name).to eq "foo"
-#     end
+    it "updates quality of each item" do
+      item1 = double("Item")
+      item2 = double("Item")
+      item3 = double("Item")
+      expect(item1).to receive_messages(alter_quality: nil )
+      expect(item2).to receive_messages(alter_quality: nil)
+      expect(item3).to receive_messages(alter_quality: nil)
+      GildedRose.new(item1).update_quality()
+      GildedRose.new(item2).update_quality()
+      GildedRose.new(item3).update_quality()
+    end
 #
 #     it "does not decrease the quality of an item if it already at 0" do
 #       items = Item.new("foo", 0, 0)
@@ -50,5 +55,5 @@
 #       expect(items[0].quality).to eq(100)
 #     end
 #
-#   end
-# end
+  end
+end
