@@ -39,5 +39,11 @@ describe GildedRose do
       expect(gilded_rose.quality).to eq(50)
     end
 
+    it "the Sulfuras item never has to be sold and never decreases in quality" do
+      gilded_rose = GildedRose.new(Item.new("Sulfuras", 1000, 100))
+      gilded_rose.update_quality()
+      expect(gilded_rose.quality).to eq(100)
+    end
+
   end
 end
