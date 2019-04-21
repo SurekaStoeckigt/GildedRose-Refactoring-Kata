@@ -4,18 +4,29 @@ require_relative "item"
 class RegularItem < Item
 
   def alter_quality
+    @sell_in -= 1
+    
     if @name == "Aged Brie"
-
-      return @quality +=1
+      alter_brie
+    else
+      alter_item
     end
 
-    if @quality > 0 && @sell_in > 0
-      @sell_in -=1
-      @quality -=1
-    elsif @quality > 0 && @sell_in == 0
-      @quality -=2
-    end
-    @quality
-  end
+    limits
+end
 
+private
+
+def alter_brie
+  @sell_in >=0 ? @quality += 1 : @quality += 2
+end
+
+def alter_item
+  @sell_in < 0 ? @quality -= 2 : @quality -= 1
+end
+
+def limits
+  @quality < 0 ? @quality = 0 : @quality
+  @quality > 50? @quality = 50 : @quality
+end
 end

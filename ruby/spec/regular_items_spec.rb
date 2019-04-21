@@ -38,9 +38,16 @@ describe RegularItem do
   context "when the item is Aged Brie" do
 
     it "raises its quality by 1 after 1 day" do
-    item = RegularItem.new("Aged Brie", 1, 0)
-    GildedRose.new(item).update_quality
-    expect(item.quality).to eq(1)
+      item = RegularItem.new("Aged Brie", 1, 0)
+      GildedRose.new(item).update_quality
+      expect(item.quality).to eq(1)
+    end
+
+    it "qill not not raise the quality beyond 50" do
+      item =  RegularItem.new("Aged Brie", 1, 50)
+      GildedRose.new(item).update_quality
+      expect(item.quality).to eq(50)
+      end
+    end
+
   end
-  end 
-end
