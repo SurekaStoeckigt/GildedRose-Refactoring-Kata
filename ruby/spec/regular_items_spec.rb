@@ -26,4 +26,13 @@ describe RegularItem do
     GildedRose.new(item).update_quality
     expect(item.quality).to eq(4)
   end
+
+  context "after sell_in" do
+    it "lowers the quality by 2 after sell in date" do
+      item = RegularItem.new("Test Item", 0, 2)
+      GildedRose.new(item).update_quality
+      expect(item.quality).to eq(0)
+    end
+  end
+
 end
