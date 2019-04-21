@@ -36,6 +36,7 @@ def backstage_passes_to_concert
   @sell_in > 10 ? @quality += 1 : @quality
   @sell_in > 5 && @sell_in <=10 ? @quality +=2 : @quality
   @sell_in > 0 && @sell_in < 5 ? @quality += 3 : @quality
+  @sell_in <= 0 ? @quality = 0 : @quality
 end
 
 end

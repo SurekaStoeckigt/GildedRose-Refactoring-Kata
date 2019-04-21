@@ -107,6 +107,27 @@ describe RegularItem do
         expect(item.quality).to eq(3)
       end
 
+      it "will not increase its quality to greater than 50" do
+        item = RegularItem.new("Backstage passes to a TAFKAL80ETC concert", 2, 48)
+        GildedRose.new(item).update_quality
+        expect(item.quality).to eq(50)
+      end
+    end
+
+    context "after sellIn" do
+
+      it "sets its quality to 0 after sellIn" do
+        item = RegularItem.new("Backstage passes to a TAFKAL80ETC concert", 0, 50)
+        GildedRose.new(item).update_quality
+        expect(item.quality).to eq(0)
+      end
+
+      it "if its quality is 0 after sellIn, it remains at 0" do
+        item = RegularItem.new("Backstage passes to a TAFKAL80ETC concert", 0, 0)
+        GildedRose.new(item).update_quality
+        expect(item.quality).to eq(0)
+      end
+
     end
 
     end
