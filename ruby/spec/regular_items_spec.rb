@@ -35,4 +35,12 @@ describe RegularItem do
     end
   end
 
+  context "when the item is Aged Brie" do
+
+    it "raises its quality by 1 after 1 day" do
+    item = RegularItem.new("Aged Brie", 1, 0)
+    GildedRose.new(item).update_quality
+    expect(item.quality).to eq(1)
+  end
+  end 
 end
